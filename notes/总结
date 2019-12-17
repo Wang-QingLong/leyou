@@ -203,7 +203,9 @@ day02:
 
 
 
-7,跨域问题:          跨域是指跨域名的访问，以下情况都属于跨域：
+7,跨域问题(以下是复杂写法，最简单的就是在controller类上加上注解@CrossOrigin(allowedHeaders = "*",allowCredentials = "true")):
+
+         跨域是指跨域名的访问，以下情况都属于跨域：
 
                     域名不同
 
