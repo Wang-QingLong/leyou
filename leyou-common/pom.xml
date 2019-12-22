@@ -11,10 +11,10 @@
 
     <artifactId>leyou-common</artifactId>
     <dependencies>
+        <!--lomnok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
         <!--cookie工具类要用-->
         <dependency>
@@ -28,7 +28,7 @@
             <artifactId>spring-web</artifactId>
             <scope>compile</scope>
         </dependency>
-        <!--json序列化和反序列化-->
+        <!--json序列化和反序列化:包含了jackson-annotations-jar包-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -53,6 +53,16 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>4.5.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.0.11.RELEASE</version>
         </dependency>
     </dependencies>
 

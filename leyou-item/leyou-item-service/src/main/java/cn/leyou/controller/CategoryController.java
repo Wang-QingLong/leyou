@@ -1,5 +1,6 @@
 package cn.leyou.controller;
 
+import cn.leyou.dto.CategoryDTO;
 import cn.leyou.pojo.Category;
 import cn.leyou.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
  * @description:
  */
 //@CrossOrigin(allowedHeaders = "*",allowCredentials = "true")
-@CrossOrigin(origins = "*",maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -35,4 +36,17 @@ public class CategoryController {
 
         return ResponseEntity.ok(categoryList);
     }
+
+
+    /**
+     * 根据品牌查询商品类目
+     *
+     * @param brandId
+     * @return
+     */
+    @GetMapping("/of/brand")
+    public ResponseEntity<List<CategoryDTO>> queryByBrandId(@RequestParam(value = "id") Long brandId) {
+        return ResponseEntity.ok(this.categoryService.queryListByBrandId(brandId));
+    }
+
 }

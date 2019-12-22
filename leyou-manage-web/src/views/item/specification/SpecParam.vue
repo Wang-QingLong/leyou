@@ -17,7 +17,7 @@
           <v-btn icon @click="editParam(props.item)">
             <i class="el-icon-edit"/>
           </v-btn>
-          <v-btn icon @click="deleteParam(props.item.id)">
+          <v-btn icon  @click="deleteParam(props.item.id)">
             <i class="el-icon-delete"/>
           </v-btn>
         </td>

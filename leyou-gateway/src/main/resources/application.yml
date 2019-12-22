@@ -7,8 +7,10 @@ zuul:
   prefix: /api
   routes:
     item-service: /item/**
+    item-upload: /upload/**
   ignored-services:    #设置服务路由的忽略
     - item-service
+    - item-upload
 eureka:
   client:
     service-url:
@@ -16,3 +18,20 @@ eureka:
   instance:
     prefer-ip-address: true
     ip-address: 127.0.0.1
+
+ly:
+  cors:
+    allowedOrigins:
+      - http://manage.leyou.com
+    allowCredentials: true
+    allowedHeaders:
+      - "*"
+    allowedMethods:
+      - GET
+      - POST
+      - DELETE
+      - PUT
+      - OPTIONS
+      - HEAD
+    maxAge: 3600
+    filterPath: "/**"

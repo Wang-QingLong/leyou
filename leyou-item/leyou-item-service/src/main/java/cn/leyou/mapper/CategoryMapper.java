@@ -1,7 +1,12 @@
 package cn.leyou.mapper;
 
+import cn.leyou.mapperUtils.BaseMapper;
 import cn.leyou.pojo.Category;
-import tk.mybatis.mapper.common.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+
+
+import java.util.List;
 
 /**
  * @version V1.0
@@ -9,5 +14,13 @@ import tk.mybatis.mapper.common.Mapper;
  * @date: 2019/12/16 21:12
  * @description:
  */
-public interface CategoryMapper extends Mapper<Category> {
+public interface CategoryMapper extends BaseMapper<Category> {
+    /**
+     * 根据品牌查询商品类目
+     *
+     * @param brandId
+     * @return
+     */
+    @Select("SELECT tc.id, tc.`name`, tc.parent_id, tc.is_parent, tc.sort FROM tb_category_brand tcb LEFT JOIN tb_category tc ON tcb.category_id = tc.id WHERE tcb.brand_id = #{id}")
+    List<Category> queryByBrandId(@Param("id") Long brandId);
 }

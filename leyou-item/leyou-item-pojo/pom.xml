@@ -18,11 +18,6 @@
             <artifactId>leyou-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!--lombok-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
         <!--通用mapper自带mybatis和jdbc，jdbc里面自带tx事务-->
         <dependency>
             <groupId>tk.mybatis</groupId>
