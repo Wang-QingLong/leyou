@@ -49,4 +49,16 @@ public class CategoryController {
         return ResponseEntity.ok(this.categoryService.queryListByBrandId(brandId));
     }
 
+    /**
+     * 根据ids集合查询数据
+     *
+     * @param ids
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseEntity<List<CategoryDTO>> queryCategoriesByIds(@RequestParam("ids") List<Long> ids) {
+        return ResponseEntity.ok(this.categoryService.queryCategoriesByIds(ids));
+    }
+
+
 }

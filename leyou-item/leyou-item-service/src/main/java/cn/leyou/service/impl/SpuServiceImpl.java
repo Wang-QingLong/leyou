@@ -94,7 +94,7 @@ public class SpuServiceImpl implements SpuService {
             List<CategoryDTO> categoryDTOS = this.categoryService.queryCategoriesByIds(spuDTO.getCategoryIds());
 
             String names = categoryDTOS.stream()     //List<CategoryDTO  ==> Stream<CategoryDTO> >
-                    .map(CategoryDTO::getName)   //对每个元素进行操作  List<CategoryDTO ===>Stream<CategoryDTO>   >
+                    .map(CategoryDTO::getName)
                     .collect(Collectors.joining("/"));
 
             spuDTO.setCategoryName(names);

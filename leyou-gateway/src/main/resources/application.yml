@@ -8,9 +8,11 @@ zuul:
   routes:
     item-service: /item/**
     item-upload: /upload/**
+    search-service: /search/**
   ignored-services:    #设置服务路由的忽略
     - item-service
     - item-upload
+    - search-service
 eureka:
   client:
     service-url:
@@ -23,6 +25,7 @@ ly:
   cors:
     allowedOrigins:
       - http://manage.leyou.com
+      - http://www.leyou.com
     allowCredentials: true
     allowedHeaders:
       - "*"

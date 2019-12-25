@@ -11,6 +11,15 @@ import cn.leyou.result.PageResult;
  * @description:
  */
 public interface SpuService {
+    /**
+     * 查询页面数据
+     *
+     * @param page
+     * @param rows
+     * @param saleable
+     * @param key
+     * @return
+     */
     PageResult<SpuDTO> querySpuByPage(Integer page, Integer rows, Boolean saleable, String key);
 
     /**
