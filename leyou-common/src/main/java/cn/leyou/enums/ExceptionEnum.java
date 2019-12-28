@@ -37,6 +37,7 @@ public enum ExceptionEnum {
     BRAND_FIND_FAILED(500,"根据categoryId查询品牌失败"),
     FIND_SKUS_BY_SPUID_FAILED(500,"根据spuId查询skus数据为空"),
     INVALID_PARAM_ERROR(402,"请求参数有误"),
+    INVALID_REQUEST_PARAM(402,"无效的请求参数"),
     DATA_TRANSFER_ERROR(500, "数据转换异常");
 
     private int status;

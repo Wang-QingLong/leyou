@@ -1,11 +1,10 @@
 package cn.leyou.search.clients;
 
-import cn.leyou.dto.CategoryDTO;
-import cn.leyou.dto.SkuDTO;
-import cn.leyou.dto.SpuDTO;
+import cn.leyou.dto.*;
 import cn.leyou.pojo.Sku;
 import cn.leyou.pojo.Spu;
 import cn.leyou.result.PageResult;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class GoodsFeignServiceFallback implements GoodsFeignService {
         spuDTO.setName("elsticsearch页面查询数据失败");
         strings.add(spuDTO);
 
-        return new PageResult<SpuDTO>(strings, page, rows);
+        return new PageResult<SpuDTO>( page, rows,strings);
     }
 
     /**
@@ -71,5 +70,32 @@ public class GoodsFeignServiceFallback implements GoodsFeignService {
         Sku sku = new Sku();
         sku.setImages("根据spuId查询skus数据失败");
         return skuDTOS;
+    }
+
+    /**
+     * 根据规格组Id,或者分类Id,或者是否可搜索，查询对应的规格参数
+     *
+     * @param gid
+     * @param cid
+     * @param searching
+     * @return
+     */
+    @Override
+    public List<SpecParamDTO> findParams(Long gid, Long cid, boolean searching) {
+        return null;
+    }
+
+    /**根据spuId查询spudetail数据
+     * @param spuId
+     * @return
+     */
+    @Override
+    public SpuDetailDTO findSpuDetailBySpuId(Long spuId) {
+        return null;
+    }
+
+    @Override
+    public List<BrandDTO> queryBrandByIds(List<Long> ids) {
+        return null;
     }
 }

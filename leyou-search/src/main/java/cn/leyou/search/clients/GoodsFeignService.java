@@ -1,8 +1,6 @@
 package cn.leyou.search.clients;
 
-import cn.leyou.dto.CategoryDTO;
-import cn.leyou.dto.SkuDTO;
-import cn.leyou.dto.SpuDTO;
+import cn.leyou.dto.*;
 import cn.leyou.result.PageResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -37,19 +35,59 @@ public interface GoodsFeignService {
             @RequestParam(value = "key", required = false) String key);
 
 
-    /**根据Ids查询数据
+    /**
+     * 根据Ids查询数据
+     *
      * @param ids
      * @return
      */
     @GetMapping("/category/list")
-   List<CategoryDTO> queryCategoriesByIds(@RequestParam("ids") List<Long> ids);
+    List<CategoryDTO> queryCategoriesByIds(@RequestParam("ids") List<Long> ids);
 
 
-    /**根据spuId查询sku数据
+    /**
+     * 根据spuId查询sku数据
+     *
      * @param id
      * @return
      */
     @GetMapping("sku/of/spu")
-  List<SkuDTO> findSkusBySpuId(@RequestParam("id") Long id);
+    List<SkuDTO> findSkusBySpuId(@RequestParam("id") Long id);
+
+
+    /**
+     * 根据规格组Id,或者分类Id,或者是否可搜索，查询对应的规格参数
+     *
+     * @param gid
+     * @param cid
+     * @param searching
+     * @return
+     */
+    @GetMapping("/spec/params")
+    List<SpecParamDTO> findParams(
+            @RequestParam(value = "gid", required = false) Long gid,
+            @RequestParam(value = "cid", required = false) Long cid,
+            @RequestParam(value = "searching", required = false) boolean searching);
+
+
+    /**
+     * 根据spuId查询spudetail数据
+     *
+     * @param spuId
+     * @return
+     */
+    @GetMapping("/spu/detail")
+    SpuDetailDTO findSpuDetailBySpuId(@RequestParam("id") Long spuId);
+
+
+    /**
+     * 根据多个id查询品牌
+     *
+     * @param ids
+     * @return
+     */
+    @GetMapping("/brand/list")
+    List<BrandDTO> queryBrandByIds(@RequestParam("ids") List<Long> ids);
+
 
 }

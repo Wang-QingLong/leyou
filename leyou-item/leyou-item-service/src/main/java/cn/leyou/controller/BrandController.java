@@ -89,7 +89,7 @@ public class BrandController {
      * @param brandId
      * @return
      */
-    @DeleteMapping("deleteBrandById")
+    @DeleteMapping("/deleteBrandById")
     public ResponseEntity<String> deleteBrandById(@RequestParam(value = "id") Long brandId) {
         //先查询一下是否存在中间表关联
         int count = brandService.findBrandAndCategoryByBrandId(brandId);
@@ -115,6 +115,18 @@ public class BrandController {
     public ResponseEntity<List<BrandDTO>> findBrandByCategoryById(@RequestParam("id") Long cid) {
 
         return ResponseEntity.ok(brandService.findBrandByCategoryId(cid));
+    }
+
+
+    /**
+     * 根据多个id查询品牌
+     *
+     * @param ids
+     * @return
+     */
+    @GetMapping("/list")
+    public ResponseEntity<List<BrandDTO>> queryBrandByIds(@RequestParam("ids") List<Long> ids) {
+        return ResponseEntity.ok(this.brandService.queryBrandByIds(ids));
     }
 
 

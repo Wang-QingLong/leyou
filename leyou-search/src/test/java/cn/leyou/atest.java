@@ -51,7 +51,7 @@ public class atest {
         int page = 1;
         while (true) {
             //死循环，分页查询spu
-            PageResult<SpuDTO> spuDTOPageResult = goodsFeignService.querySpuByPage(page, 50, false, null);
+            PageResult<SpuDTO> spuDTOPageResult = goodsFeignService.querySpuByPage(page, 50, true, null);
 
             page++;
 

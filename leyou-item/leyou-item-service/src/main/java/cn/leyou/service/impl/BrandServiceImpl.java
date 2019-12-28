@@ -17,6 +17,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -72,7 +73,7 @@ public class BrandServiceImpl implements BrandService {
 
         List<BrandDTO> list = BeanHelper.copyWithCollection(brands, BrandDTO.class);
 
-        return new PageResult(list, brandPageInfo.getTotal(), brandPageInfo.getPages());
+        return new PageResult(brandPageInfo.getTotal(), brandPageInfo.getPages(), list);
     }
 
 
@@ -206,6 +207,28 @@ public class BrandServiceImpl implements BrandService {
         }
 
 
-        return  BeanHelper.copyWithCollection(brandlist,BrandDTO.class);
+        return BeanHelper.copyWithCollection(brandlist, BrandDTO.class);
+    }
+
+
+    /**
+     * 根据id的集合查询商品分类
+     *
+     * @param ids
+     * @return
+     */
+    @Override
+    public List<BrandDTO> queryBrandByIds(List<Long> ids) {
+        List<Brand> list = null;
+        try {
+            list = brandMapper.selectByIdList(ids);
+        } catch (Exception e) {
+            MySqlExceptionUtils.CheckMySqlException(e);
+        }
+        // 判断是否为空
+        if(CollectionUtils.isEmpty(list)){
+            throw new LyException(ExceptionEnum.BRAND_NOT_FOUND);
+        }
+        return BeanHelper.copyWithCollection(list, BrandDTO.class);
     }
 }

@@ -12,13 +12,14 @@ import java.util.List;
  */
 @Data
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class PageResult<T> {
 
-    private List<T> items;  //当前页面数据
     private long total;      //总条数
     private long totalPage;  //总页数
+    private List<T> items;  //当前页面数据
+
 
 }

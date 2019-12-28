@@ -12,6 +12,7 @@ import cn.leyou.utils.MySqlExceptionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 /**
@@ -27,19 +28,22 @@ public class SpecParamServiceImpl implements SpecParamService {
     private SpecParamMapper specParamMapper;
 
 
-    /**根据id查询参数
+    /**
+     * 根据规格组Id,或者分类Id,或者是否可搜索，查询对应的规格参数
+     *
      * @param gid
      * @param cid
      * @return
      */
     @Override
-    public List<SpecParamDTO> findParams(Long gid,Long cid) {
+    public List<SpecParamDTO> findParams(Long gid, Long cid, boolean searching) {
 
         //通用mapper天生就是一个动态sql，谁的值不为null谁查，两个都不为null并列查
 
         SpecParam specParam = new SpecParam();
         specParam.setGroupId(gid);
         specParam.setCid(cid);
+        specParam.setSearching(searching);
 
         List<SpecParam> specParams = null;
         try {

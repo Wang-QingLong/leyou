@@ -33,7 +33,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--导入common-->
+        <!--导入service-->
         <dependency>
             <groupId>com.leyou</groupId>
             <artifactId>leyou-item-pojo</artifactId>

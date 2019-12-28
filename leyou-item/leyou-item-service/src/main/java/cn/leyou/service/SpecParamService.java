@@ -12,10 +12,10 @@ import java.util.List;
  */
 public interface SpecParamService {
     /**
-     * 根据规 格组Id查询参数
+     * 根据规格组Id,或者分类Id,或者是否可搜索，查询对应的规格参数
      *
      * @param gid
      * @return
      */
-    List<SpecParamDTO> findParams(Long gid,Long cid);
+    List<SpecParamDTO> findParams(Long gid,Long cid,boolean searching );
 }

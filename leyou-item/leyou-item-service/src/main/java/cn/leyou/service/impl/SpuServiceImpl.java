@@ -70,7 +70,7 @@ public class SpuServiceImpl implements SpuService {
             criteria.andEqualTo("saleable", saleable);
         }
         // 2.3 默认按时间排序
-        example.setOrderByClause("update_time DESC");
+//        example.setOrderByClause("update_time DESC");
         // 3 查询结果
         List<Spu> list = null;
         try {
@@ -103,7 +103,7 @@ public class SpuServiceImpl implements SpuService {
 
         });
 
-        return new PageResult<SpuDTO>(spuDTOList, info.getTotal(), info.getPages());
+        return new PageResult<SpuDTO>( info.getTotal(), info.getPages(),spuDTOList);
     }
 
     /**
